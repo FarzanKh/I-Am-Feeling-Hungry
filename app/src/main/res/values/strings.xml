@@ -12,5 +12,5 @@
     <string name="checkTen">$</string>
     <string name="checkEleven">Delivery</string>
     <string name="checkTwelve">Dine In</string>
-    <string name="btnSubmit">I Am Feeling Hungry!</string>
+    <string name="btnSubmit">Submit</string>
 </resources>
