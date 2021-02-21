@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,7 +14,7 @@ public class DashboardActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.dashboard);
         logout=findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,10 +25,5 @@ public class DashboardActivity extends Activity {
                 finish();
             }
         });
-    }
-
-    public void onTakeQuiz(View view) {
-        Intent intent = new Intent(this, QuizActivity.class);
-        startActivity(intent);
     }
 }
