@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">IAmFeelingHungry</string>
+    <string name="checkOne">American</string>
+    <string name="checkTwo">Asian</string>
+    <string name="checkThree">Mexican</string>
+    <string name="checkFour">Italian</string>
+    <string name="checkFive">Middle Eastern</string>
+    <string name="checkSix">African</string>
+    <string name="checkSeven">$$$$</string>
+    <string name="checkEight">$$$</string>
+    <string name="checkNine">$$</string>
+    <string name="checkTen">$</string>
+    <string name="checkEleven">Delivery</string>
+    <string name="checkTwelve">Dine In</string>
+    <string name="btnSubmit">I Am Feeling Hungry!</string>
 </resources>
