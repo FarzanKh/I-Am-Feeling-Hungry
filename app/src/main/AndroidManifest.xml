@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IAmFeelingHungry">
-        <activity android:name=".QuizActivity"></activity>
+        <activity android:name=".RestaurantDetailActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".QuizActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".RestaurantList" />
