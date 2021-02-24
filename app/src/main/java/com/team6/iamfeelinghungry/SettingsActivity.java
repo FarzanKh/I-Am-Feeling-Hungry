@@ -16,40 +16,19 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
 
-        Switch toggle = (Switch) findViewById(R.id.darklightmode);
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                } else {
-                    // The toggle is disabled
-                }
-            }
-        });
+//        Switch toggle = (Switch) findViewById(R.id.darklightmode);
+//        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    // The toggle is enabled
+//                } else {
+//                    // The toggle is disabled
+//                }
+//            }
+//        });
 
 
     }
 
-
-    /** Called when the user touches the back button */
-    public void backBtn(View view)
-    {
-        // Do something in response to button click
-
-    }
-
-    /** Called when the user touches the 3days button */
-    public void threeDays(View view)
-    {
-        // Do something in response to button click
-
-    }
-
-    /** Called when the user touches the 1 week button */
-    public void oneWeek(View view)
-    {
-        // Do something in response to button click
-
-    }
 
 }
