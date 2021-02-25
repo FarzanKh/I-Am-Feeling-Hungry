@@ -182,13 +182,12 @@
             app:layout_constraintTop_toBottomOf="@+id/txtQuestionOne3" />
 
         <Button
-            android:id="@+id/btnSubmit"
-            style="@style/Widget.MaterialComponents.Button"
+            android:id="@+id/quizBtn"
+            android:onClick="onClickSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClickSubmit"
             android:layout_marginTop="24dp"
-            android:text="@string/btnSubmit"
+            android:text="I'm Feeling Hungry"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBox13" />

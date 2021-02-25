@@ -26,4 +26,9 @@ public class DashboardActivity extends Activity {
             }
         });
     }
+
+    public void onTakeQuiz(View view) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        startActivity(intent);
+    }
 }
