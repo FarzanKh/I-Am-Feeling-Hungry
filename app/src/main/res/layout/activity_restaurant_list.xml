@@ -6,9 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantList">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="201dp"
-        tools:layout_editor_absoluteY="357dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
