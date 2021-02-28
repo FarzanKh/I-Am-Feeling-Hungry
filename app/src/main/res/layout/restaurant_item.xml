@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="237dp">
+
+        <ImageView
+            android:id="@+id/restaurantImg"
+            android:layout_width="175dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="117dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="tvTitle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/restaurantImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="113dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintStart_toEndOf="@+id/tvAddress"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistance"
+            tools:text="Breakfast" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@android:style/Widget.Material.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
+            android:numStars="5"
+            android:progressBackgroundTint="#DCDCDC"
+            android:progressTint="#FF9800"
+            android:rating="3.5"
+            android:secondaryProgressTint="#DFFBB041"
+            android:stepSize="0.5"
+            app:layout_constraintStart_toEndOf="@+id/restaurantImg"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            style="@android:style/Widget.Material.TextView"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+            tools:text="Poway St" />
+
+        <TextView
+            android:id="@+id/tvDistance"
+            style="@android:style/Widget.Material.TextView"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintStart_toEndOf="@+id/tvPrice"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantImg"
+            tools:text="1.7 mi" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            style="@android:style/Widget.Material.TextView"
+            android:layout_width="124dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintEnd_toStartOf="@+id/tvDistance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantImg"
+            tools:text="$$" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
