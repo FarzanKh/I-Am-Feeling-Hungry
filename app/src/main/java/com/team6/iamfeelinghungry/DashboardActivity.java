@@ -31,4 +31,11 @@ public class DashboardActivity extends Activity {
         Intent intent = new Intent(this, QuizActivity.class);
         startActivity(intent);
     }
+
+
+    // Navigate to Settings Activity
+    public void navToSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
 }

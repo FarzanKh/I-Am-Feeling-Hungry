@@ -29,4 +29,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Take The Quiz" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="76dp"
+        android:layout_height="72dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="#EA8542"
+        android:onClick="navToSettings"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_setting_foreground"
+        android:tint="#FFFFFF" />
+
 </LinearLayout>
