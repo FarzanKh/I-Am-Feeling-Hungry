@@ -1,10 +1,15 @@
 package com.team6.iamfeelinghungry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,7 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestaurantList extends AppCompatActivity {
     static final String TAG = "TAAAG";
-    static final String TAG2 = "INTENT";
     static final String BASE_URL = "https://api.yelp.com/v3/";
     static Retrofit retrofit = null;
     final static String API_KEY = "7mZjgwtvzn-ZNyFATZ9FsmtMNtJCiOSmJKpJSJMallIFpiWUaTrOlejHBU6kcJcFgIxIFEowdivuCDN_flTHVWTOq75lYFEmNhYycOAH4iq4k7zaeVA0GgPmZJoxYHYx";
@@ -31,6 +35,11 @@ public class RestaurantList extends AppCompatActivity {
     String priceRangeFormat;
     String transactionType;
     String location;
+
+    private RestaurantListAdapter restaurantListAdapter;
+    private List<Business> businessList;
+    private RecyclerView recyclerView;
+
 
 
     @Override
@@ -55,8 +64,15 @@ public class RestaurantList extends AppCompatActivity {
 
         transactionType = intent.getStringExtra(TRANSACTION_MESSAGE).toLowerCase();
         location = intent.getStringExtra(LOCATION_MESSAGE).toLowerCase();
-        
+
+
+        businessList = new ArrayList<>();
+        restaurantListAdapter = new RestaurantListAdapter(businessList, this);
         connect();
+        recyclerView = findViewById(R.id.rvRestaurantList);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(restaurantListAdapter);
     }
 
     private void connect() {
@@ -69,9 +85,7 @@ public class RestaurantList extends AppCompatActivity {
 
         YelpAPIService yelpAPIService = retrofit.create(YelpAPIService.class);
 
-        Call<YelpDataClass> call = yelpAPIService.getRestaurants("Bearer " + API_KEY, restaurantType, priceRangeFormat, transactionType, location);
-
-
+        Call<YelpDataClass> call = yelpAPIService.getRestaurants("Bearer " + API_KEY, restaurantType, priceRangeFormat, transactionType, location, 3);
 
         call.enqueue(new Callback<YelpDataClass>() {
             @Override
@@ -79,6 +93,10 @@ public class RestaurantList extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null) {
                     Log.i(TAG, "onResponse $response");
+
+                    businessList = response.body().getBusinesses();
+                    restaurantListAdapter = new RestaurantListAdapter(businessList, RestaurantList.this);
+                    recyclerView.setAdapter(restaurantListAdapter);
                 }
             }
 
