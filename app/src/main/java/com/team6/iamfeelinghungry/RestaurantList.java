@@ -85,7 +85,7 @@ public class RestaurantList extends AppCompatActivity {
 
         YelpAPIService yelpAPIService = retrofit.create(YelpAPIService.class);
 
-        Call<YelpDataClass> call = yelpAPIService.getRestaurants("Bearer " + API_KEY, restaurantType, priceRangeFormat, transactionType, location);
+        Call<YelpDataClass> call = yelpAPIService.getRestaurants("Bearer " + API_KEY, restaurantType, priceRangeFormat, transactionType, location, 3);
 
         call.enqueue(new Callback<YelpDataClass>() {
             @Override

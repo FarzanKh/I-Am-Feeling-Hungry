@@ -158,7 +158,8 @@ public class Business {
     public String convertDistance() {
         Double miles = 0.000621371;
         Double distanceInMiles = this.distance * miles;
-        return distanceInMiles + " mi";
+        String result = String.format("%.2f", distanceInMiles);
+        return result + " mi";
     }
 
 }
