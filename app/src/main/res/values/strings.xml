@@ -1,24 +1,16 @@
 <resources>
     <string name="app_name">IAmFeelingHungry</string>
-
-    <string-array name="restaurant_types">
-        <item>American</item>
-        <item>Asian</item>
-        <item>Mexican</item>
-        <item>Italian</item>
-        <item>Middle Eastern</item>
-        <item>African</item>
-    </string-array>
-
-    <string-array name="price_range">
-        <item>$$$$</item>
-        <item>$$$</item>
-        <item>$$</item>
-        <item>$</item>
-    </string-array>
-
-    <string-array name="transaction_types">
-        <item>Delivery</item>
-        <item>Pickup</item>
-    </string-array>
+    <string name="checkOne">American</string>
+    <string name="checkTwo">Asian</string>
+    <string name="checkThree">Mexican</string>
+    <string name="checkFour">Italian</string>
+    <string name="checkFive">Middle Eastern</string>
+    <string name="checkSix">African</string>
+    <string name="checkSeven">$$$$</string>
+    <string name="checkEight">$$$</string>
+    <string name="checkNine">$$</string>
+    <string name="checkTen">$</string>
+    <string name="checkEleven">Delivery</string>
+    <string name="checkTwelve">Dine In</string>
+    <string name="btnSubmit">Submit</string>
 </resources>
