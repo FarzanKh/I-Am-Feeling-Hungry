@@ -18,4 +18,11 @@
         android:text="Logout"
         android:textSize="20dp"
         android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToDatabase"
+        android:text="Go to Database" />
 </LinearLayout>

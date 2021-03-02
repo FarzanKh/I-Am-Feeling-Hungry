@@ -26,4 +26,9 @@ public class DashboardActivity extends Activity {
             }
         });
     }
+
+    public void goToDatabase(View view){
+        Intent intent = new Intent(this, DatabaseActivity.class);
+        startActivity(intent);
+    }
 }
