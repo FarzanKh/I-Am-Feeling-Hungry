@@ -20,6 +20,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText emailEt,passwordEt1,passwordEt2;
@@ -27,6 +30,8 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView SignInTv;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_sign_up);
         firebaseAuth=FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance("https://hungryapp-d791e-default-rtdb.firebaseio.com/").getReference();
         emailEt=findViewById(R.id.email);
         passwordEt1=findViewById(R.id.password1);
         passwordEt2=findViewById(R.id.password2);
@@ -83,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
             passwordEt1.setError("Length should be > 4");
             return;
         }
-        else if(!isVallidEmail(email)){
+        else if(!isValidEmail(email)){
             emailEt.setError("invalid email");
             return;
         }
@@ -94,6 +100,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    // save to database
+                    writeNewUser(task.getResult().getUser());
+                    // notify success
                     Toast.makeText(SignUpActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(SignUpActivity.this,DashboardActivity.class);
                     startActivity(intent);
@@ -106,7 +115,13 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-    private Boolean isVallidEmail(CharSequence target){
+
+    private void writeNewUser(FirebaseUser user){
+        User dbUser = new User(user.getEmail());
+        mDatabase.child("users").child(user.getUid()).setValue(dbUser);
+    }
+
+    private Boolean isValidEmail(CharSequence target){
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 }
