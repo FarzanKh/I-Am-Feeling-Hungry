@@ -37,4 +37,15 @@ public class Restaurant {
 
         return result;
     }
+
+    @Exclude
+    public static Restaurant toRestaurant(HashMap<String, String> restaurantMap){
+        String yelpId_map = restaurantMap.get("yelpId");
+        String timestamp_map = restaurantMap.get("timestamp");
+        String name_map = restaurantMap.get("name");
+        String category_map = restaurantMap.get("category");
+        String address_map = restaurantMap.get("address");
+
+        return new Restaurant(yelpId_map,timestamp_map,name_map,category_map,address_map);
+    }
 }

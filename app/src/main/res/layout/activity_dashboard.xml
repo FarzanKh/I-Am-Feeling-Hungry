@@ -64,7 +64,7 @@
         android:text="Take The Quiz" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
+        android:id="@+id/rvFavoriteRestaurant"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

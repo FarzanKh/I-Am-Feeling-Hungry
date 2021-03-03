@@ -51,7 +51,7 @@ public class DashboardActivity extends Activity {
 
         favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
         getListOfRestaurants();
-        recyclerView = findViewById(R.id.rvRestaurantList);
+        recyclerView = findViewById(R.id.rvFavoriteRestaurant);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(favoriteRestaurantAdapter);
@@ -64,9 +64,9 @@ public class DashboardActivity extends Activity {
                 Log.e("firebase", "Error getting data", task.getException());
             }
             else {
-                HashMap<String,Restaurant> restaurants = (HashMap<String,Restaurant>) task.getResult().getValue();
-                for (Map.Entry<String,Restaurant> restaurantEntry: restaurants.entrySet()){
-                    restaurantList.add(restaurantEntry.getValue());
+                HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
+                for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
+                    restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
                 }
                 favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
                 recyclerView.setAdapter(favoriteRestaurantAdapter);
@@ -83,9 +83,9 @@ public class DashboardActivity extends Activity {
                 Log.e("firebase", "Error getting data", task.getException());
             }
             else {
-                HashMap<String,Restaurant> restaurants = (HashMap<String,Restaurant>) task.getResult().getValue();
-                for (Map.Entry<String,Restaurant> restaurantEntry: restaurants.entrySet()){
-                    restaurantList.add(restaurantEntry.getValue());
+                HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
+                for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
+                    restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
                 }
                 favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
                 recyclerView.setAdapter(favoriteRestaurantAdapter);
