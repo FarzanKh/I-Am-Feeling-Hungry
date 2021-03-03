@@ -7,22 +7,31 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
+
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.ViewHolder> {
-    private List<Business> businessList;
+    private final ClickListener listener;
+
+//    private List<Business> businessList;
+    public static List<Business> businessList;
+
     private Context context;
 
-    public RestaurantListAdapter(List<Business> businessList, Context context) {
+    public RestaurantListAdapter(List<Business> businessList, Context context, ClickListener listener) {
         this.businessList = businessList;
         this.context = context;
+
+        this.listener = listener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView restaurantImg;
         TextView tvTitle;
         TextView tvCategory;
@@ -31,8 +40,10 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         TextView tvDistance;
         TextView tvPrice;
 
+        private WeakReference<ClickListener> listenerRef;
 
-        public ViewHolder(@NonNull View itemView) {
+
+        public ViewHolder(@NonNull View itemView, ClickListener listener) {
             super(itemView);
 
             restaurantImg = itemView.findViewById(R.id.restaurantImg);
@@ -42,6 +53,17 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             tvAddress = itemView.findViewById(R.id.tvAddress);
             tvDistance = itemView.findViewById(R.id.tvDistance);
             tvPrice = itemView.findViewById(R.id.tvPrice);
+
+            listenerRef = new WeakReference<>(listener);
+            restaurantImg.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == restaurantImg.getId()) {
+                Toast.makeText(v.getContext(), "ITEM PRESSED = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            }
+            listenerRef.get().onPositionClicked(getAdapterPosition());
         }
     }
 
@@ -50,7 +72,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, listener);
     }
 
     @Override
