@@ -13,23 +13,6 @@
         android:textColor="#0445D1"
         android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        android:text="Logout"
-        android:textAllCaps="false"
-        android:textSize="20dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:onClick="onTakeQuiz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Take The Quiz" />
-
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="76dp"
@@ -40,5 +23,28 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_setting_foreground"
         android:tint="#FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="60dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:onClick="onTakeQuiz"
+            android:text="Take The Quiz" />
+    </LinearLayout>
 
 </LinearLayout>
