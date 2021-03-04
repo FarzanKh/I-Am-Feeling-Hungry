@@ -66,8 +66,8 @@ public class DashboardActivity extends Activity {
             else {
                 HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
                 if (restaurants != null) {
-                    for (Map.Entry<String, Object> restaurantEntry : restaurants.entrySet()) {
-                        restaurantList.add(Restaurant.toRestaurant((HashMap<String, String>) restaurantEntry.getValue()));
+                    for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
+                        restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
                     }
                     favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
                     recyclerView.setAdapter(favoriteRestaurantAdapter);
@@ -85,9 +85,9 @@ public class DashboardActivity extends Activity {
                 Log.e("firebase", "Error getting data", task.getException());
             }
             else {
+                restaurantList = new ArrayList<>();
                 HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
                 for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
-                    restaurantList = new ArrayList<>();
                     restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
                 }
                 favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);

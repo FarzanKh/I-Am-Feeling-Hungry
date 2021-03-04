@@ -75,7 +75,10 @@ public class RestaurantList extends AppCompatActivity {
 
 
         businessList = new ArrayList<>();
-        restaurantListAdapter = new RestaurantListAdapter(businessList, this);
+        restaurantListAdapter = new RestaurantListAdapter(businessList, this, new ClickListener() {
+            @Override public void onPositionClicked(int position) {
+                // callback performed on click
+            }});
         connect();
         recyclerView = findViewById(R.id.rvRestaurantList);
         recyclerView.setHasFixedSize(true);
@@ -103,7 +106,18 @@ public class RestaurantList extends AppCompatActivity {
                     Log.i(TAG, "onResponse $response");
 
                     businessList = response.body().getBusinesses();
-                    restaurantListAdapter = new RestaurantListAdapter(businessList, RestaurantList.this);
+                    restaurantListAdapter = new RestaurantListAdapter(businessList, RestaurantList.this, new ClickListener() {
+                        @Override public void onPositionClicked(int position) {
+                            // callback performed on click  business.getName()  business.getLocation().getAddress1()
+                            Business business = businessList.get(position);
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hi Bro, I just found an amazing restaurant! Check this: " + business.getName() + " / " + business.getLocation().getAddress1()); // + RestaurantListAdapter.businessList
+                            sendIntent.setType("text/plain");
+
+                            Intent shareIntent = Intent.createChooser(sendIntent, null);
+                            startActivity(shareIntent);
+                        }});
                     recyclerView.setAdapter(restaurantListAdapter);
                 }
             }
