@@ -68,7 +68,6 @@ public class DashboardActivity extends Activity {
                 if (restaurants != null) {
                     for (Map.Entry<String, Object> restaurantEntry : restaurants.entrySet()) {
                         restaurantList.add(Restaurant.toRestaurant((HashMap<String, String>) restaurantEntry.getValue()));
-                        Log.w("restaurant","added restaurant");
                     }
                     favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
                     recyclerView.setAdapter(favoriteRestaurantAdapter);
