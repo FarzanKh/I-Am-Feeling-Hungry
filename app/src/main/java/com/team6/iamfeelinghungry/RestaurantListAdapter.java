@@ -33,7 +33,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         this.listener = listener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView restaurantImg;
         TextView tvTitle;
         TextView tvCategory;
