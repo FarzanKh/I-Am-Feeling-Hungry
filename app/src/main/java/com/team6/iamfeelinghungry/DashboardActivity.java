@@ -87,6 +87,7 @@ public class DashboardActivity extends Activity {
             else {
                 HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
                 for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
+                    restaurantList = new ArrayList<>();
                     restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
                 }
                 favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
