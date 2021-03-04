@@ -42,6 +42,7 @@ public class RestaurantList extends AppCompatActivity {
     private List<Business> businessList;
     private RecyclerView recyclerView;
 
+    ClickListener listener;
 
 
     @Override
@@ -78,7 +79,11 @@ public class RestaurantList extends AppCompatActivity {
         restaurantListAdapter = new RestaurantListAdapter(businessList, this, new ClickListener() {
             @Override public void onPositionClicked(int position) {
                 // callback performed on click
-            }});
+            }
+            @Override public void onFavoriteClicked(int position) {
+
+            }
+        });
         connect();
         recyclerView = findViewById(R.id.rvRestaurantList);
         recyclerView.setHasFixedSize(true);
@@ -117,7 +122,11 @@ public class RestaurantList extends AppCompatActivity {
 
                             Intent shareIntent = Intent.createChooser(sendIntent, null);
                             startActivity(shareIntent);
-                        }});
+                        }
+                        @Override public void onFavoriteClicked(int position) {
+
+                        }
+                    });
                     recyclerView.setAdapter(restaurantListAdapter);
                 }
             }

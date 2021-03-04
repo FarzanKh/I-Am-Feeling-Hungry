@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
     private Context context;
 
+
     public RestaurantListAdapter(List<Business> businessList, Context context, ClickListener listener) {
         this.businessList = businessList;
         this.context = context;
@@ -31,7 +33,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         this.listener = listener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         ImageView restaurantImg;
         TextView tvTitle;
         TextView tvCategory;
@@ -39,6 +41,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         TextView tvAddress;
         TextView tvDistance;
         TextView tvPrice;
+        ImageButton tvImgButton;
 
         private WeakReference<ClickListener> listenerRef;
 
@@ -53,18 +56,34 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             tvAddress = itemView.findViewById(R.id.tvAddress);
             tvDistance = itemView.findViewById(R.id.tvDistance);
             tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvImgButton = itemView.findViewById(R.id.tvImgButton);
 
             listenerRef = new WeakReference<>(listener);
             restaurantImg.setOnClickListener(this);
+            tvImgButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            if (v.getId() == restaurantImg.getId()) {
+
+            if (v.getId() == tvImgButton.getId()) {
+                Toast.makeText(v.getContext(), "ITEM PRESSED AT = " + String.valueOf(getAdapterPosition()) , Toast.LENGTH_SHORT).show();
+
+                Business business = businessList.get(getAdapterPosition());
+
+                //get the business id business.getId();
+                System.out.println("getting the id for the restaurant " + business.getId());
+                listenerRef.get().onFavoriteClicked(getAdapterPosition());
+
+            } else if (v.getId() == restaurantImg.getId()) {
                 Toast.makeText(v.getContext(), "ITEM PRESSED = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+
+                listenerRef.get().onPositionClicked(getAdapterPosition());
             }
-            listenerRef.get().onPositionClicked(getAdapterPosition());
+
         }
+
+
     }
 
 
@@ -88,6 +107,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         Picasso.get().load(business.getImageUrl()).centerCrop().fit().into(holder.restaurantImg);
 
     }
+
 
     @Override
     public int getItemCount() {
