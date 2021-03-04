@@ -65,11 +65,14 @@ public class DashboardActivity extends Activity {
             }
             else {
                 HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
-                for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
-                    restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
+                if (restaurants != null) {
+                    for (Map.Entry<String, Object> restaurantEntry : restaurants.entrySet()) {
+                        restaurantList.add(Restaurant.toRestaurant((HashMap<String, String>) restaurantEntry.getValue()));
+                        Log.w("restaurant","added restaurant");
+                    }
+                    favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
+                    recyclerView.setAdapter(favoriteRestaurantAdapter);
                 }
-                favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
-                recyclerView.setAdapter(favoriteRestaurantAdapter);
             }
         });
     }
