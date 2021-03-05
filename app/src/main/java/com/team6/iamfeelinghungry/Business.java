@@ -93,66 +93,66 @@ public class Business {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
+//    public void setImageUrl(String imageUrl) {
+//        this.imageUrl = imageUrl;
+//    }
+//
     public int getReviewCount() {
         return reviewCount;
     }
-
-    public void setReviewCount(int reviewCount) {
-        this.reviewCount = reviewCount;
-    }
+//
+//    public void setReviewCount(int reviewCount) {
+//        this.reviewCount = reviewCount;
+//    }
 
     public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
+//    public void setCategories(List<Category> categories) {
+//        this.categories = categories;
+//    }
 
     public double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
+//    public void setRating(double rating) {
+//        this.rating = rating;
+//    }
+//
     public List<String> getTransactions() {
         return transactions;
     }
-
-    public void setTransactions(List<String> transactions) {
-        this.transactions = transactions;
-    }
+//
+//    public void setTransactions(List<String> transactions) {
+//        this.transactions = transactions;
+//    }
 
     public String getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
+//    public void setPrice(String price) {
+//        this.price = price;
+//    }
 
     public YelpLocation getLocation() {
         return location;
     }
 
-    public void setLocation(YelpLocation location) {
-        this.location = location;
-    }
-
-
-    public double getDistance() {
-        return distance;
-    }
-
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
+//    public void setLocation(YelpLocation location) {
+//        this.location = location;
+//    }
+//
+//
+//    public double getDistance() {
+//        return distance;
+//    }
+//
+//    public void setDistance(double distance) {
+//        this.distance = distance;
+//    }
 
     // Convert meters to miles
     public String convertDistance() {
