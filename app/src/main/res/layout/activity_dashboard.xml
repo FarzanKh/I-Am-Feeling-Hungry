@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50px"
     android:gravity="center"
+    android:background="#FFFDE7"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif-black"
+        android:text="I'm Feeling Hungry!"
+        android:textColor="#FF5722"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="458dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavoriteRestaurant"
+            android:layout_width="372dp"
+            android:layout_height="452dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="105dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="62dp"
-            android:text="I'm Feeling Hungry"
-            android:textColor="#0445D1"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+        <Button
+            android:id="@+id/button"
+            style="@android:style/Widget.Material.Button.Colored"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#FF9800"
+            android:onClick="onTakeQuiz"
+            android:outlineAmbientShadowColor="#FF9800"
+            android:outlineSpotShadowColor="#FF9800"
+            android:shadowColor="#FFC107"
+            android:text="START THE QUIZ"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColorHighlight="#EA8542"
+            android:textColorLink="#EA8542" />
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="76dp"
-            android:layout_height="72dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:adjustViewBounds="false"
-            android:backgroundTint="#EA8542"
+            android:backgroundTint="#C3A64E"
             android:onClick="navToSettings"
-            android:scaleType="fitCenter"
+            android:scaleType="center"
             android:src="@drawable/ic_setting_foreground"
             android:tint="#FFFFFF" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom|center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/addRestaurantBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="addRestaurant"
-            android:text="Add a restaurant" />
-
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:textSize="20dp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:onClick="onTakeQuiz"
-        android:text="Take The Quiz" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFavoriteRestaurant"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

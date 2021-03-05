@@ -28,7 +28,7 @@ public class DashboardActivity extends Activity {
     private FavoriteRestaurantAdapter favoriteRestaurantAdapter;
     private RecyclerView recyclerView;
     private List<Restaurant> restaurantList = new ArrayList<>();
-    private Button logout;
+
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mDatabase;
     private String userId;
@@ -42,16 +42,7 @@ public class DashboardActivity extends Activity {
         firebaseAuth=FirebaseAuth.getInstance();
         userId = firebaseAuth.getCurrentUser().getUid();
         mDatabase = FirebaseDatabase.getInstance("https://hungryapp-d791e-default-rtdb.firebaseio.com/").getReference();
-        logout=findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent=new Intent(DashboardActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
         favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
         getListOfRestaurants();
