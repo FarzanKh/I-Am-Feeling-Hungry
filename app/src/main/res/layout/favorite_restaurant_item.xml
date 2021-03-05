@@ -6,7 +6,7 @@
     android:layout_height="170dp"
     android:layout_margin="8dp"
     android:background="@drawable/card2"
-    android:backgroundTint="#FFF684"
+    android:backgroundTint="#ECE161"
     android:orientation="vertical"
     android:padding="10dp">
 
