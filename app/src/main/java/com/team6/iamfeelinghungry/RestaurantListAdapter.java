@@ -1,6 +1,7 @@
 package com.team6.iamfeelinghungry;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,24 +13,34 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.ViewHolder> {
     private final ClickListener listener;
-
-//    private List<Business> businessList;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference mDatabase;
     public static List<Business> businessList;
-
     private Context context;
+    private String userId;
 
 
     public RestaurantListAdapter(List<Business> businessList, Context context, ClickListener listener) {
         this.businessList = businessList;
         this.context = context;
-
+        firebaseAuth=FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        mDatabase = FirebaseDatabase.getInstance("https://hungryapp-d791e-default-rtdb.firebaseio.com/").getReference();
         this.listener = listener;
     }
 
@@ -71,8 +82,9 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
                 Business business = businessList.get(getAdapterPosition());
 
-                //get the business id business.getId();
-                System.out.println("getting the id for the restaurant " + business.getId());
+                //write to database
+                writeNewRestaurant(business.getId(),business.getName(),business.getCategories().get(0).getTitle(),business.getLocation().getAddress1());
+
                 listenerRef.get().onFavoriteClicked(getAdapterPosition());
 
             } else if (v.getId() == restaurantImg.getId()) {
@@ -83,7 +95,21 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
         }
 
+        public void writeNewRestaurant(String yelpId, String name, String category, String address){
+            // get new restaurant entry key
+            String key = mDatabase.child("users").child(userId).child("restaurants").push().getKey();
 
+            // get current timestamp
+            Long tsLong = System.currentTimeMillis();
+            String timestamp = tsLong.toString();
+
+            // add new restaurant
+            Restaurant restaurant = new Restaurant(yelpId,timestamp,name,category,address);
+            Map<String,String> restaurantValues = restaurant.toMap();
+            Map<String,Object> childUpdates= new HashMap<>();
+            childUpdates.put("/users/" + userId + "/restaurants/" + key,restaurantValues);
+            mDatabase.updateChildren(childUpdates);
+        }
     }
 
 

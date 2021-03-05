@@ -7,13 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,19 +63,20 @@ public class DashboardActivity extends Activity {
 
     public void getListOfRestaurants(){
         Query restaurantsQuery = mDatabase.child("users").child(userId).child("restaurants").orderByChild("timestamp");
-        restaurantsQuery.get().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                Log.e("firebase", "Error getting data", task.getException());
-            }
-            else {
-                HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
-                if (restaurants != null) {
-                    for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
-                        restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
-                    }
-                    favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
-                    recyclerView.setAdapter(favoriteRestaurantAdapter);
+        restaurantsQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                restaurantList = new ArrayList<>();
+                for (DataSnapshot restaurantSnapshot: snapshot.getChildren()){
+                    restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantSnapshot.getValue()));
                 }
+                favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, getApplicationContext());
+                recyclerView.setAdapter(favoriteRestaurantAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("firebase", "Error getting data", error.toException());
             }
         });
     }
@@ -79,21 +84,6 @@ public class DashboardActivity extends Activity {
     // to delete later
     public void addRestaurant(View view){
         writeNewRestaurant("100","McDonalds", "Fast Food", "123 Main Street");
-        Query restaurantsQuery = mDatabase.child("users").child(userId).child("restaurants").orderByChild("timestamp");
-        restaurantsQuery.get().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                Log.e("firebase", "Error getting data", task.getException());
-            }
-            else {
-                restaurantList = new ArrayList<>();
-                HashMap<String,Object> restaurants = (HashMap<String,Object>) task.getResult().getValue();
-                for (Map.Entry<String,Object> restaurantEntry: restaurants.entrySet()){
-                    restaurantList.add(Restaurant.toRestaurant((HashMap<String,String>) restaurantEntry.getValue()));
-                }
-                favoriteRestaurantAdapter = new FavoriteRestaurantAdapter(restaurantList, this);
-                recyclerView.setAdapter(favoriteRestaurantAdapter);
-            }
-        });
     }
 
     public void writeNewRestaurant(String yelpId, String name, String category, String address){

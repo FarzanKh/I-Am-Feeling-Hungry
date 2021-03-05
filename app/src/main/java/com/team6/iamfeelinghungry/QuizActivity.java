@@ -43,6 +43,10 @@ public class QuizActivity extends AppCompatActivity {
         String transactionTypeSelect = String.valueOf(transactionTypeSpinner.getSelectedItem());
         String location = locationEditText.getText().toString();
 
+        if (location.equals("")){
+            return;
+        }
+
         intent.putExtra(RestaurantList.RESTAURANT_MESSAGE, restaurantTypeSelect);
         intent.putExtra(RestaurantList.PRICE_MESSAGE, priceRangeSelect);
         intent.putExtra(RestaurantList.TRANSACTION_MESSAGE, transactionTypeSelect);
