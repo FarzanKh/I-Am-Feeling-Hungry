@@ -3,58 +3,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170dp"
     android:layout_margin="8dp"
+    android:background="@drawable/card2"
+    android:backgroundTint="#FFF684"
     android:orientation="vertical"
     android:padding="10dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="144dp">
+        android:layout_height="150dp">
 
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="161dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="186dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="fill_vertical"
+            android:paddingLeft="5dp"
             android:text="tvTitle"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
+            android:textSize="22dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvCategory"
-            android:layout_width="113dp"
+            android:layout_width="158dp"
             android:layout_height="27dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="fill_vertical"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
             tools:text="Breakfast" />
 
         <TextView
             android:id="@+id/tvAddress"
             style="@android:style/Widget.Material.TextView"
-            android:layout_width="124dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="18dp"
+            android:layout_width="157dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="fill_vertical"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="Poway St" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="85dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:rotation="20"
+            android:src="@drawable/emoji"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="58dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="60dp"
+            android:rotation="-10"
+            android:src="@drawable/emoji2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
