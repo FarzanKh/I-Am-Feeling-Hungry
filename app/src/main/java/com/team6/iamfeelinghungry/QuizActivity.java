@@ -31,7 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void onClickSubmit(View view) {
-        Intent intent = new Intent(this, RestaurantList.class);
+        Intent intent = new Intent(this, RestaurantListActivity.class);
 
         foodTypeSpinner = (Spinner) findViewById(R.id.foodTypeSpinner);
         priceRangeSpinner = (Spinner) findViewById(R.id.priceRangeSpinner);
@@ -47,10 +47,10 @@ public class QuizActivity extends AppCompatActivity {
             return;
         }
 
-        intent.putExtra(RestaurantList.RESTAURANT_MESSAGE, restaurantTypeSelect);
-        intent.putExtra(RestaurantList.PRICE_MESSAGE, priceRangeSelect);
-        intent.putExtra(RestaurantList.TRANSACTION_MESSAGE, transactionTypeSelect);
-        intent.putExtra(RestaurantList.LOCATION_MESSAGE, location);
+        intent.putExtra(RestaurantListActivity.RESTAURANT_MESSAGE, restaurantTypeSelect);
+        intent.putExtra(RestaurantListActivity.PRICE_MESSAGE, priceRangeSelect);
+        intent.putExtra(RestaurantListActivity.TRANSACTION_MESSAGE, transactionTypeSelect);
+        intent.putExtra(RestaurantListActivity.LOCATION_MESSAGE, location);
 
         startActivity(intent);
     }

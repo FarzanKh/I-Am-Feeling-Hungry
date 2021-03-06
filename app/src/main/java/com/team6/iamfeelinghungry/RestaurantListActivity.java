@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RestaurantList extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity {
     static final String TAG = "TAAAG";
     static final String BASE_URL = "https://api.yelp.com/v3/";
     static Retrofit retrofit = null;
@@ -111,7 +111,7 @@ public class RestaurantList extends AppCompatActivity {
                     Log.i(TAG, "onResponse $response");
 
                     businessList = response.body().getBusinesses();
-                    restaurantListAdapter = new RestaurantListAdapter(businessList, RestaurantList.this, new ClickListener() {
+                    restaurantListAdapter = new RestaurantListAdapter(businessList, RestaurantListActivity.this, new ClickListener() {
                         @Override public void onPositionClicked(int position) {
                             // callback performed on click  business.getName()  business.getLocation().getAddress1()
                             Business business = businessList.get(position);

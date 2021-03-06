@@ -25,8 +25,8 @@ public class YelpDataClass {
         return businesses;
     }
 
-    public void setBusinesses(List<Business> businesses) {
-        this.businesses = businesses;
-    }
+//    public void setBusinesses(List<Business> businesses) {
+//        this.businesses = businesses;
+//    }
 
 }
