@@ -80,26 +80,31 @@ public class SettingsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // The toggle is enabled, Disable Radio Buttons
-                    radBtn1.setClickable(false);
-                    radBtn2.setClickable(false);
-                    radBtn3.setClickable(false);
-                    btn.setClickable(false);
-                    switchBtn.setText("Notification Status: Disabled");
-                    notifCheck = false;
-
-                    if (!notifCheck && alarmManager != null && pendingIntent != null) {
-                        alarmManager.cancel(pendingIntent);
-                    }
-
-                } else {
-                    // The toggle is disabled, Enable Radio Buttons
                     radBtn1.setClickable(true);
                     radBtn2.setClickable(true);
                     radBtn3.setClickable(true);
                     btn.setClickable(true);
                     switchBtn.setText("Notification Status: Enabled");
+                    Toast.makeText(SettingsActivity.this,
+                            "Switch On", Toast.LENGTH_SHORT).show();
                     notifCheck = true;
 
+
+                } else {
+                    // The toggle is enabled, Disable Radio Buttons
+                    radBtn1.setClickable(false);
+                    radBtn2.setClickable(false);
+                    radBtn3.setClickable(false);
+                    //btn.setClickable(false);
+                    Toast.makeText(SettingsActivity.this,
+                            "Switch Off", Toast.LENGTH_SHORT).show();
+                    switchBtn.setText("Notification Status: Disabled");
+                    //switchBtn.setCol
+                    notifCheck = false;
+
+                    if (!notifCheck && alarmManager != null && pendingIntent != null) {
+                        alarmManager.cancel(pendingIntent);
+                    }
                 }
             }
         });
@@ -144,12 +149,13 @@ public class SettingsActivity extends AppCompatActivity {
     /** Called when the user touches the save button */
     public void saveNotification(View view)
     {
+
         // Do something in response to button click
         if(rad1) {
-            sendToast("Notification set for Every 10 secs!");
-            scheduleNotification(getNotification( "Every 10 secs" ) , 5000 );
+            sendToast("Notification set in 10 secs!");
+            scheduleNotification(getNotification( "After 10 secs" ) , 8000 );
         } else if (rad2) {
-            sendToast("Notification set for 3 Days a Week!");
+            sendToast("Notification set in 3 days!");
             int num = 86400000 * 3;
             scheduleNotification(getNotification( "In 3 days" ) , num );
         } else if(rad3) {
@@ -172,7 +178,7 @@ public class SettingsActivity extends AppCompatActivity {
         long futureInMillis = SystemClock.elapsedRealtime() + delay ;
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE ) ;
         assert alarmManager != null;
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, delay, pendingIntent); ;
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent); ;
     }
 
     private Notification getNotification (String content) {
