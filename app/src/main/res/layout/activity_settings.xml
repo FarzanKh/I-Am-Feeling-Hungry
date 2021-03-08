@@ -9,19 +9,22 @@
 
     <!-- add RadioGroup which contain the many RadioButton-->
 
+
     <TextView
         android:id="@+id/configuration"
-        android:layout_width="319dp"
-        android:layout_height="39dp"
+        android:layout_width="380dp"
+        android:layout_height="93dp"
         android:text="Configure Restaurant Notification"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.233" />
 
     <RadioGroup
         android:id="@+id/groupradio"
@@ -32,17 +35,17 @@
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.346">
+        app:layout_constraintVertical_bias="0.366">
 
 
         <RadioButton
             android:id="@+id/radia_id1"
             android:layout_width="368dp"
             android:layout_height="43dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Demo (Every 10 secs)"
-            android:textSize="18dp"
             android:buttonTint="#EA8542"
+            android:onClick="onRadioButtonClicked"
+            android:text="Demo (In 10 secs)"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.627"
@@ -54,10 +57,10 @@
             android:id="@+id/radia_id2"
             android:layout_width="368dp"
             android:layout_height="43dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Every 3 Days"
-            android:textSize="18dp"
             android:buttonTint="#EA8542"
+            android:onClick="onRadioButtonClicked"
+            android:text="In 3 Days"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.627"
@@ -69,10 +72,10 @@
             android:id="@+id/radia_id3"
             android:layout_width="350dp"
             android:layout_height="51dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Once a Week"
-            android:textSize="18dp"
             android:buttonTint="#EA8542"
+            android:onClick="onRadioButtonClicked"
+            android:text="In a Week"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.262"
@@ -89,23 +92,25 @@
         android:backgroundTint="#EA8542"
         android:onClick="saveNotification"
         android:text="Save"
+        android:textSize="18dp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
-
+        app:layout_constraintVertical_bias="0.556" />
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="#EA8542"
         android:text="Logout"
-        android:textAllCaps="false"
         android:textSize="20dp"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -115,9 +120,11 @@
         android:layout_width="289dp"
         android:layout_height="77dp"
         android:thumbTint="#EA8542"
-        android:trackTint="#FFDAB5"
+        android:trackTint="#ffb973"
         android:text="Notification Status:"
-        android:textSize="18dp"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.229"
