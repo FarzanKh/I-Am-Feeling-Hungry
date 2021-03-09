@@ -115,12 +115,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
+
     <Switch
         android:id="@+id/switch1"
         android:layout_width="289dp"
         android:layout_height="77dp"
-        android:thumbTint="#EA8542"
-        android:trackTint="#ffb973"
+        android:theme="@style/SwitchTheme"
         android:text="Notification Status:"
         android:textSize="23dp"
         android:textStyle="bold"
