@@ -78,18 +78,15 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         public void onClick(View v) {
 
             if (v.getId() == tvImgButton.getId()) {
-                Toast.makeText(v.getContext(), "ITEM PRESSED AT = " + String.valueOf(getAdapterPosition()) , Toast.LENGTH_SHORT).show();
-
                 Business business = businessList.get(getAdapterPosition());
 
                 //write to database
                 writeNewRestaurant(business.getId(),business.getName(),business.getCategories().get(0).getTitle(),business.getLocation().getAddress1());
 
                 listenerRef.get().onFavoriteClicked(getAdapterPosition());
+                Toast.makeText(v.getContext(), business.getName() + " saved!", Toast.LENGTH_SHORT).show();
 
             } else if (v.getId() == restaurantImg.getId()) {
-                Toast.makeText(v.getContext(), "ITEM PRESSED = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-
                 listenerRef.get().onPositionClicked(getAdapterPosition());
             }
 

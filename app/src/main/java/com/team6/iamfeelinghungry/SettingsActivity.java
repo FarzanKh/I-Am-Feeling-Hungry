@@ -84,22 +84,13 @@ public class SettingsActivity extends AppCompatActivity {
                     radBtn2.setClickable(true);
                     radBtn3.setClickable(true);
                     btn.setClickable(true);
-                    switchBtn.setText("Notification Status: Enabled");
-                    Toast.makeText(SettingsActivity.this,
-                            "Switch On", Toast.LENGTH_SHORT).show();
                     notifCheck = true;
-
 
                 } else {
                     // The toggle is enabled, Disable Radio Buttons
                     radBtn1.setClickable(false);
                     radBtn2.setClickable(false);
                     radBtn3.setClickable(false);
-                    //btn.setClickable(false);
-                    Toast.makeText(SettingsActivity.this,
-                            "Switch Off", Toast.LENGTH_SHORT).show();
-                    switchBtn.setText("Notification Status: Disabled");
-                    //switchBtn.setCol
                     notifCheck = false;
 
                     if (!notifCheck && alarmManager != null && pendingIntent != null) {
