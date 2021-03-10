@@ -14,10 +14,11 @@
  - add randomization
  - refactor in packages and import?
 
-![Screenshot_1615354144](https://user-images.githubusercontent.com/14272565/110582379-fab47880-8120-11eb-8c2d-d19231b742e6.png)
-![Screenshot_1615354187](https://user-images.githubusercontent.com/14272565/110582392-0011c300-8121-11eb-8b7a-604db0e85737.png)
-![Screenshot_1615354202](https://user-images.githubusercontent.com/14272565/110582407-0607a400-8121-11eb-82fc-7a51023ae5b1.png)
-![Screenshot_1615354227](https://user-images.githubusercontent.com/14272565/110582419-0a33c180-8121-11eb-935a-98400cc65f54.png)
-![Screenshot_1615354244](https://user-images.githubusercontent.com/14272565/110582433-0f910c00-8121-11eb-8f45-0a71003352c2.png)
-![Screenshot_1615354275](https://user-images.githubusercontent.com/14272565/110582454-1586ed00-8121-11eb-97cf-1fdaae94f7b6.png)
+![Screenshot_1615354144](https://user-images.githubusercontent.com/14272565/110582915-c42b2d80-8121-11eb-935d-029ba2310640.jpg)
+![Screenshot_1615354187](https://user-images.githubusercontent.com/14272565/110582917-c42b2d80-8121-11eb-8963-df0dac35a70c.jpg)
+![Screenshot_1615354202](https://user-images.githubusercontent.com/14272565/110582919-c4c3c400-8121-11eb-96e9-ee4a8557005e.jpg)
+![Screenshot_1615354227](https://user-images.githubusercontent.com/14272565/110582921-c55c5a80-8121-11eb-9a40-b227f0b0ee6b.jpg)
+![Screenshot_1615354244](https://user-images.githubusercontent.com/14272565/110582925-c5f4f100-8121-11eb-9428-0ffda8cbb04e.jpg)
+![Screenshot_1615354275](https://user-images.githubusercontent.com/14272565/110582926-c68d8780-8121-11eb-90e8-dc786347f417.jpg)
+
 
